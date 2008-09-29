@@ -53,6 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes README
 %{perl_vendorlib}/MIME/EncWords.pm
+%dir %{perl_vendorlib}/MIME/EncWords
 %{perl_vendorlib}/MIME/EncWords/Defaults.pm.sample
 %{perl_vendorlib}/MIME/EncWords/JA_JP.pod
 %{_mandir}/man3/*
