@@ -4,8 +4,7 @@
 %include	/usr/lib/rpm/macros.perl
 %define		pdir	MIME
 %define		pnam	EncWords
-Summary:	-
-Summary(pl.UTF-8):	-
+Summary:	MIME::EncWords - deal with RFC 2047 encoded words (improved)
 Name:		perl-MIME-EncWords
 Version:	1.010
 Release:	0.1
@@ -16,27 +15,21 @@ Source0:	http://www.cpan.org/modules/by-module/MIME/%{pdir}-%{pnam}-%{version}.t
 URL:		http://search.cpan.org/dist/MIME-EncWords/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+%if %{with tests}
+BuildRequires:	perl-MIME-Charset >= 1.006.1
+%endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-# most of CPAN modules have generic URL (substitute pdir and pnam here)
 
 %description
-
-%description -l pl.UTF-8
+Deal with RFC 2047 encoded words (improved).
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-# Don't use pipes here: they generally don't work. Apply a patch.
 %{__perl} Makefile.PL \
 	INSTALLDIRS=vendor
-
-%{__make}
-# if module isn't noarch, use:
-# %{__make} \
-#	CC="%{__cc}"
-#	OPTIMIZE="%{rpmcflags}"
 
 %{?with_tests:%{__make} test}
 
@@ -46,14 +39,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} pure_install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+#%{perl_vendorlib}/MIME/EncWords/Defaults.pm.sample
+#%{perl_vendorlib}/MIME/EncWords/JA_JP.pod
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
 %doc Changes README
-%{perl_vendorlib}/MIME/EncWords.pm
-%dir %{perl_vendorlib}/MIME/EncWords
-%{perl_vendorlib}/MIME/EncWords/Defaults.pm.sample
-%{perl_vendorlib}/MIME/EncWords/JA_JP.pod
-%{_mandir}/man3/*
+#%{perl_vendorlib}/MIME/EncWords.pm
+#%dir %{perl_vendorlib}/MIME/EncWords
+#%{_mandir}/man3/*
