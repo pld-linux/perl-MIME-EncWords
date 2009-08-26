@@ -6,12 +6,12 @@
 %define		pnam	EncWords
 Summary:	MIME::EncWords - deal with RFC 2047 encoded words (improved)
 Name:		perl-MIME-EncWords
-Version:	1.010.101
+Version:	1.011.1
 Release:	1
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/MIME/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	2009449d0af39275d45e45a4afcaf58f
+# Source0-md5:	2f4ed2c785d472614c96f9541096d3ca
 URL:		http://search.cpan.org/dist/MIME-EncWords/
 BuildRequires:	perl-devel >= 1:5.8.1
 BuildRequires:	rpm-perlprov >= 4.1-13
