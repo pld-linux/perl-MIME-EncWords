@@ -7,7 +7,7 @@
 Summary:	MIME::EncWords - deal with RFC 2047 encoded words (improved)
 Name:		perl-MIME-EncWords
 Version:	1.012.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/MIME/%{pdir}-%{pnam}-%{version}.tar.gz
@@ -54,5 +54,5 @@ rm -rf $RPM_BUILD_ROOT
 %doc Changes README
 %{_mandir}/man3/*
 %{perl_vendorlib}/MIME/EncWords.pm
-%{perl_vendorlib}/MIME/EncWords.pm
+%dir %{perl_vendorlib}/Encode/MIME
 %{perl_vendorlib}/Encode/MIME/EncWords.pm
